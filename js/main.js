@@ -2,6 +2,8 @@ $(function(){
   window.addEventListener('resize', resize, false);
   init();
 
+
+
   // canvas resize
   function resize(stage) {
     stage.canvas.width = $(".canvasContainer").width();
