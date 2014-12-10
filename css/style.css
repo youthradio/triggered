@@ -1,3 +1,4 @@
+/*General styling*/
 @font-face {
     font-family: 'press_style_extra_lregular';
     src: url('../fonts/press_style_extra_l-webfont.eot');
@@ -11,14 +12,18 @@
 
 }
 
-html, body, .container-fluid{
+html, body, .container-fluid, .canvasContainer{
   height: 100%;
   margin: 0;
+  overflow: hidden;
 }
-
+.canvasContainer{
+  width: 100%;
+}
+canvas { display:block; }
 
 .container-fluid{
-  background-image: url("../images/bg.jpg");
+  background-image: url("../images/bg-1.jpg");
   background-size: cover;
 }
 
@@ -38,3 +43,37 @@ html, body, .container-fluid{
   font-size: 50px;
   padding-top: 15px;
 }
+
+/*Modal*/
+.modal{
+  top: 100px;
+}
+.modal-dialog {
+width: 100%;
+height: 100%;
+margin: 0;
+}
+.modal-content{
+  height: 100%;
+  background-color: rgba(67, 63, 65, .7);
+}
+
+.modal-header {
+  border-bottom: 0px;
+  text-align: right;
+}
+
+.modal-header .close {
+margin-top: -20px;
+}
+
+.close {
+float: none;
+font-size: 90px;
+font-weight: 700;
+line-height: 1;
+color: #120000;
+text-shadow: 0 1px 0 #FFFFFF;
+opacity: .2;
+}
+
