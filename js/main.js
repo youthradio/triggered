@@ -1,22 +1,18 @@
 $(function(){
-  window.addEventListener('resize', resize, false);
+   window.addEventListener('resize', resize, false);
+  // Call init function
   init();
-
-
-
-  // canvas resize
+   // canvas resize
   function resize(stage) {
     stage.canvas.width = $(".canvasContainer").width();
     stage.canvas.height = $(".canvasContainer").height();
-      }
+  }
 
-   // setting up the stage for easelJS
-    function init(){
-      createjs.Touch.enable(stage);
-
+ // setting up the stage for easelJS
+  function init(){
+      // Variables
       var images = []
-      var stage = new createjs.Stage("mainCanvas");
-          stage.enableMouseOver();
+      stage = new createjs.Stage("mainCanvas");
       var progress = new createjs.Shape();
       var progressBellow = new createjs.Shape();
       var txt = new createjs.Text();
@@ -24,19 +20,28 @@ $(function(){
       var manifest = [
         {src: 'images/cell.png', id: 'cell', x: 80, y: 280},
         {src: 'images/taser.png', id: 'taser', x: 900, y: 10},
-        {src: 'images/underwear.png', id: 'underwear', x: 240, y: 350},
+        {src: 'images/brush.png', id: 'brush', x: 240, y: 350},
         {src: 'images/paintball.png', id: 'paintball', x: 90, y: -20},
         {src: 'images/pizza.png', id: 'pizza', x: 700, y: 400},
         {src: 'images/wallet.png', id: 'wallet', x: 940, y: 200},
         {src: 'images/wii.png', id: 'wii', x: 900, y: 330},
+        {src: 'images/pill.png', id: 'pill', x: 1130, y: 300}
         ]
 
+      // enable mouseOver
+      stage.enableMouseOver();
+
+      // Touch enable
+      createjs.Touch.enable(stage);
+
+      // preload events for manifest
       preload.addEventListener("progress", handleProgress);
       preload.on('fileload', handleFileLoad);
       preload.on('complete', handleComplete);
       preload.on('error', handleError);
       preload.loadManifest(manifest);
 
+      // Progress bar
       progress.graphics.beginStroke("#0B090B").drawRect(500,350,250,40);
       progressBellow.graphics.beginStroke("#0B090B").drawRect(500,350,250,40);
       txt.x = 520;
@@ -45,6 +50,7 @@ $(function(){
       txt.color = ("#0B090B");
 
 
+      // functions
       function handleError(event){
         console.log(event)
       }
@@ -67,11 +73,11 @@ $(function(){
       function handleComplete(event) {
         stage.removeChild(progress, progressBellow, txt);
         for(var i = 0; i < images.length; i++) {
+
           // using closure to add event listener to ALL bitmaps
           (function(){
             var item = images[i];
             var img = preload.getResult(item.id);
-
             var bitmap = new createjs.Bitmap(img);
 
             // Filters
@@ -80,10 +86,12 @@ $(function(){
 
             bitmap.filters = [filter, blurFilter]
             bitmap.cache(0, 0, img.width, img.height);
-            bitmap.x = item.x
-            bitmap.y = item.y
+            console.log(stage.scaleX, stage.scaleY)
+            bitmap.x = item.x * stage.scaleX;
+            bitmap.y = item.y * stage.scaleY;
             stage.addChild(bitmap);
 
+            // event listeners
              bitmap.addEventListener("mouseover", function(evt){
                 bitmap.filters = []
                 bitmap.cache(0, 0, img.width, img.height);
@@ -102,6 +110,6 @@ $(function(){
         }
         stage.update();
       }
-      resize(stage);
+    resize(stage);
    }
 })
