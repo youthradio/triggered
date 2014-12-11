@@ -17,9 +17,11 @@ html, body, .container-fluid, .canvasContainer{
   margin: 0;
   overflow: hidden;
 }
+
 .canvasContainer{
   width: 100%;
 }
+
 canvas { display:block; }
 
 .container-fluid{
