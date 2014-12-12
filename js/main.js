@@ -50,14 +50,9 @@ $(function(){
   function addSkipButton(){
     skip_button_bitmap = new createjs.Bitmap(skip_button);
     // skip_button_bitmap.cache(0, 0, skip_button.width, skip_button.height);
-    skip_button_bitmap.y = 0
-    skip_button_bitmap.x = 0
+    skip_button_bitmap.y = 500
+    skip_button_bitmap.x = $(".canvasContainer").width()/2
     createjs.Tween.get(skip_button_bitmap, {loop:true}).to({alpha:0}, 1500).to({alpha:1}, 500, createjs.Ease.quadIn);
-
-    skip_button_bitmap.addEventListener("mouseover", function(evt){
-      evt.target.cursor = 'pointer'
-    })
-
     skip_button_bitmap.addEventListener("click", function(){
       skip_intro()
     })
