@@ -1,11 +1,11 @@
 $(function(){
   var stage = new createjs.Stage("mainCanvas");
   var images = []
-  var intro_txt = new createjs.Text("According to a ProPublica analysis, young black males are 21 times more likely than white males to be shot dead by a police officer. ", "50px Courier", "#FFFFFF")
+  var intro_txt = new createjs.Text("According to a ProPublica analysis, young black males are 21 times more likely than white males to be shot dead by a police officer. ", "30px Courier", "#FFFFFF")
       intro_txt.textAlign = "center";
       intro_txt.y = 100
       intro_txt.x = $(".canvasContainer").width()/2
-      intro_txt.lineWidth = $(".canvasContainer").width()/1
+      intro_txt.lineWidth = $(".canvasContainer").width()/1.5
       intro_txt.lineHeight = 50;
 
   var skip_button = new Image();
@@ -21,16 +21,16 @@ $(function(){
     {src: 'images/cell.png', id: 'cell', x: 80, y: 280},
     {src: 'images/taser.png', id: 'taser', x: 900, y: 10},
     {src: 'images/brush.png', id: 'brush', x: 240, y: 350},
-    {src: 'images/paintball.png', id: 'paintball', x: 90, y: -20},
+    // {src: 'images/paintball.png', id: 'paintball', x: 90, y: -20},
     {src: 'images/pizza.png', id: 'pizza', x: 700, y: 400},
     {src: 'images/wallet.png', id: 'wallet', x: 940, y: 200},
     {src: 'images/wii.png', id: 'wii', x: 900, y: 330},
     {src: 'images/pill.png', id: 'pill', x: 1130, y: 300},
     {src: 'images/pelletgun_a.png', id: 'pellet_gun_a', x: 800, y: 300},
-    {src: 'images/hands.png', id: 'hands', x: 940, y: 200},
-    {src: 'images/pelletgun_b.png', id: 'pellet_gun_b', x: 900, y: 330},
-    {src: 'images/waterpistol.png', id: 'water_pistol', x: 1130, y: 300},
-    {src: 'images/toygun.png', id: 'toy_gun', x: 800, y: 300}
+    // {src: 'images/hands.png', id: 'hands', x: 940, y: 200},
+    {src: 'images/pelletgun_b.png', id: 'pellet_gun_b', x: 200, y: 330},
+    {src: 'images/waterpistol.png', id: 'water_pistol', x: 350, y: 340},
+    {src: 'images/toygun.png', id: 'toy_gun', x: 800, y: 200}
     ]
 
 
@@ -41,14 +41,15 @@ $(function(){
 // Intro text
   createjs.Tween.get(intro_txt)
   .to({alpha: 0}, 10000, createjs.Ease.sineIn)
-  .to({text: "However, the available data is either incomplete or problematic. For instance, fatal shooting reports are voluntary. There is even less data available when looking at shooting of unarmed individuals, whether it is by police or other civilians."})
+  .to({text: "The available data is either incomplete or problematic. For instance, fatal shooting reports are voluntary. There is even less data available when looking at shooting of unarmed individuals. However, this might change as Congress recently reauthorized the Death in Custody Reporting Act, a bill requiring states to report the numbers of death during arrests or while in police custody."})
   .to({alpha: 1}, 1000, createjs.Ease.sineIn)
-  .to({alpha: 0}, 11000, createjs.Ease.sineIn)
-  .to({text: "Here are some of the stories behind those shootings. "})
+  .to({alpha: 0}, 15000, createjs.Ease.sineIn)
+  .to({text: "Here are some of the stories behind police shootings of unarmed civilians."})
   .to({alpha: 1}, 1000, createjs.Ease.sineIn)
   .to({alpha: 0}, 5000, createjs.Ease.sineIn)
   .wait(1000)
   .call(init)
+
   stage.addChild(intro_txt)
 
   function getData(){
@@ -61,8 +62,8 @@ $(function(){
   function addSkipButton(){
     skip_button_bitmap = new createjs.Bitmap(skip_button);
     // skip_button_bitmap.cache(0, 0, skip_button.width, skip_button.height);
-    skip_button_bitmap.y = 500
-    skip_button_bitmap.x = $(".canvasContainer").width()/2.5
+    skip_button_bitmap.y = 530
+    skip_button_bitmap.x = $(".canvasContainer").width()/1.2
     createjs.Tween.get(skip_button_bitmap, {loop:true}).to({alpha:0}, 1500).to({alpha:1}, 500, createjs.Ease.quadIn);
     skip_button_bitmap.addEventListener("click", function(){
       skip_intro()
