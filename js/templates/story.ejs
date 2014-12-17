@@ -16,14 +16,14 @@
     <h2><span class="yellow">Story: </span><%= gsx$story.$t %></h2>
     <h2><span class="yellow">Status: </span><%= gsx$status.$t %></h2>
     <h2><span class="yellow">Source: </span>
-      <% if (gsx$sourcetwo != "") { %>
-        <% arr_1 = gsx$source.$t.split(',') %>
-        <% arr_2 = gsx$sourcetwo.$t.split(',') %>
-        <a href="<%= arr_1[1] %>"> <%= arr_1[0] %></a>,
-        <a href="<%= arr_2[1] %>"> <%= arr_2[0] %></a></h2>
+      <% if (gsx$sourcetwo.$t != "") { %>
+          <% arr_1 = gsx$source.$t.split(',') %>
+          <% arr_2 = gsx$sourcetwo.$t.split(',') %>
+          <a href='<%= arr_1[1] %>'> <%= arr_1[0] %></a>,
+          <a href='<%= arr_2[1] %>'> <%= arr_2[0] %></a></h2>
       <% } else {%>
-        <% arr_1 = gsx$source.$t.split(',') %>
-        <a href="<%= arr_1[1] %>"> <%= arr_1[0] %></a></h2>
+          <% arr_1 = gsx$source.$t.split(',') %>
+          <a href="<%= arr_1[1] %>"> <%= arr_1[0] %></a></h2>
         <% } %>
   </div>
 </div>

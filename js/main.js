@@ -44,7 +44,7 @@ $(function(){
   .to({text: "Youth Radio wanted to know the stories behind some of these shootings.But the official data is incomplete. Police shootings aren't reliably reported to federal agencies. This might change with the re-authorization of the Death in Custody Reporting Act, which encourages states to report the deaths of people while in police custody."})
   .to({alpha: 1}, 1000, createjs.Ease.sineIn)
   .to({alpha: 0}, 15000, createjs.Ease.sineIn)
-  .to({text: "n some cases, officers shoot when they mistake another object for a gun. Here are some of those high profile stories."})
+  .to({text: "In some cases, officers shoot when they mistake another object for a gun. Here are some of those high profile stories."})
   .to({alpha: 1}, 1000, createjs.Ease.sineIn)
   .to({alpha: 0}, 5000, createjs.Ease.sineIn)
   .wait(1000)
