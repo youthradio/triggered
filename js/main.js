@@ -1,7 +1,7 @@
 $(function(){
   var stage = new createjs.Stage("mainCanvas");
   var images = []
-  var intro_txt = new createjs.Text("According to a ProPublica analysis, young black males are 21 times more likely than white males to be shot dead by a police officer. ", "30px Courier", "#FFFFFF")
+  var intro_txt = new createjs.Text("According to a ProPublica analysis called Deadly Force in Black and White, young black males are 21 times more likely than white males to be shot dead by a police officer. ", "30px Courier", "#FFFFFF")
       intro_txt.textAlign = "center";
       intro_txt.y = 100
       intro_txt.x = $(".canvasContainer").width()/2
@@ -41,10 +41,10 @@ $(function(){
 // Intro text
   createjs.Tween.get(intro_txt)
   .to({alpha: 0}, 10000, createjs.Ease.sineIn)
-  .to({text: "The available data is either incomplete or problematic. For instance, fatal shooting reports are voluntary. There is even less data available when looking at shooting of unarmed individuals. However, this might change as Congress recently reauthorized the Death in Custody Reporting Act, a bill requiring states to report the numbers of death during arrests or while in police custody."})
+  .to({text: "Youth Radio wanted to know the stories behind some of these shootings.But the official data is incomplete. Police shootings aren't reliably reported to federal agencies. This might change with the re-authorization of the Death in Custody Reporting Act, which encourages states to report the deaths of people while in police custody."})
   .to({alpha: 1}, 1000, createjs.Ease.sineIn)
   .to({alpha: 0}, 15000, createjs.Ease.sineIn)
-  .to({text: "Here are some of the stories behind police shootings of unarmed civilians."})
+  .to({text: "n some cases, officers shoot when they mistake another object for a gun. Here are some of those high profile stories."})
   .to({alpha: 1}, 1000, createjs.Ease.sineIn)
   .to({alpha: 0}, 5000, createjs.Ease.sineIn)
   .wait(1000)
