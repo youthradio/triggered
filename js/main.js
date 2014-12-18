@@ -1,7 +1,9 @@
 $(function(){
+  // create stage
   var stage = new createjs.Stage("mainCanvas");
   var images = []
-  var intro_txt = new createjs.Text("According to a ProPublica analysis called Deadly Force in Black and White, young black males are 21 times more likely than white males to be shot dead by a police officer. ", "30px Courier", "#FFFFFF")
+
+  var intro_txt = new createjs.Text("According to a ProPublica analysis called 'Deadly Force in Black and White', young black males are 21 times more likely than white males to be shot dead by a police officer. ", "30px Courier", "#FFFFFF")
       intro_txt.textAlign = "center";
       intro_txt.y = 100
       intro_txt.x = $(".canvasContainer").width()/2
@@ -18,25 +20,27 @@ $(function(){
   var txt = new createjs.Text();
   var preload = new createjs.LoadQueue();
   var manifest = [
+    {src: 'images/center.png', id: 'center', x: 360, y: 80},
     {src: 'images/cell.png', id: 'cell', x: 80, y: 280},
     {src: 'images/taser.png', id: 'taser', x: 900, y: 10},
     {src: 'images/brush.png', id: 'brush', x: 240, y: 350},
-    // {src: 'images/paintball.png', id: 'paintball', x: 90, y: -20},
     {src: 'images/pizza.png', id: 'pizza', x: 700, y: 400},
     {src: 'images/wallet.png', id: 'wallet', x: 940, y: 200},
     {src: 'images/wii.png', id: 'wii', x: 900, y: 330},
     {src: 'images/pill.png', id: 'pill', x: 1130, y: 300},
     {src: 'images/pelletgun_a.png', id: 'pellet_gun_a', x: 800, y: 300},
-    // {src: 'images/hands.png', id: 'hands', x: 940, y: 200},
     {src: 'images/pelletgun_b.png', id: 'pellet_gun_b', x: 200, y: 330},
     {src: 'images/waterpistol.png', id: 'water_pistol', x: 350, y: 340},
-    {src: 'images/toygun.png', id: 'toy_gun', x: 800, y: 200}
+    {src: 'images/toygun.png', id: 'toy_gun', x: 800, y: 200},
+    {src: 'images/keys.png', id: 'keys', x: 200, y: 200},
+    {src: 'images/mic.png', id: 'mic', x: 300, y: 200}
     ]
 
 
 
   window.addEventListener('resize', resize, false);
   createjs.Ticker.addEventListener("tick", stage);
+
 
 // Intro text
   createjs.Tween.get(intro_txt)
@@ -52,6 +56,7 @@ $(function(){
 
   stage.addChild(intro_txt)
 
+  // Get data from google spreadsheet
   function getData(){
     return $.getJSON("https://spreadsheets.google.com/feeds/list/1bVYh1nHcSqcySzoLLrkoo8HIRjzZ-yZkDP22_ndDT1A/od6/public/values?hl=en_US&alt=json", function(data) {
             return data
@@ -59,11 +64,12 @@ $(function(){
     return data
   }
 
+  // add skip button to intro
   function addSkipButton(){
     skip_button_bitmap = new createjs.Bitmap(skip_button);
     // skip_button_bitmap.cache(0, 0, skip_button.width, skip_button.height);
     skip_button_bitmap.y = 530
-    skip_button_bitmap.x = $(".canvasContainer").width()/1.2
+    skip_button_bitmap.x = $(".canvasContainer").width()/1.3
     createjs.Tween.get(skip_button_bitmap, {loop:true}).to({alpha:0}, 1500).to({alpha:1}, 500, createjs.Ease.quadIn);
     skip_button_bitmap.addEventListener("click", function(){
       skip_intro()
@@ -72,6 +78,9 @@ $(function(){
     stage.update();
   }
 
+
+
+   // onclick, skip the intro text and goes straight to main screen
   function skip_intro(){
     createjs.Ticker.setPaused(true);
     stage.removeChild(intro_txt, skip_button_bitmap);
@@ -106,7 +115,7 @@ $(function(){
   stage.update()
   }
 
- // setting up the stage for easelJS
+ // setting up the stage
   function init(){
       // enable mouseOver
       stage.enableMouseOver();
@@ -129,7 +138,7 @@ $(function(){
    }
 
 
-  // functions
+  // functions from init
   function handleError(event){
     console.log(event)
   }
@@ -149,54 +158,77 @@ $(function(){
   }
 
   function handleComplete(event){
+    // remove progress bar + text + skip button
     stage.removeChild(progress, progressBellow, txt, skip_button_bitmap);
+
+    // fades the background
     $("canvas").animate({backgroundColor: 'rgba(0, 0, 0, 0)'}, 1500)
+
+    // Gets data from the backend and resolves promise
     getData().then(function(results){
+
+      // Loop through the images to create the bitmaps
         for(var i = 0; i < images.length; i++) {
+
           // using closure to add event listener to ALL bitmaps
           (function(){
-            var item = images[i];
-            var img = preload.getResult(item.id);
-            var bitmap = new createjs.Bitmap(img);
 
-            // Filters
-            var filter = new createjs.ColorFilter(0, 0, 0, .8, 57, 100, 103);
-            var blurFilter = new createjs.BlurFilter(9, 9, 9);
+            // adds center image to center without a filter
+            if (images[i].id == "center"){
+              console.log(images[i].id)
+              var center_img = images[i]
+              var center = preload.getResult(center_img.id)
+              var center_bitmap = new createjs.Bitmap(center)
+              center_bitmap.cache(0, 0, center.width, center.height);
+              center_bitmap.x = center_img.x
+              center_bitmap.y = center_img.y
+              center_bitmap.image.id = center_img.id
+              stage.addChild(center_bitmap);
+            }else{
+              console.log("else")
+              // all other objects get a filter and event listeners
+              var item = images[i];
+              var img = preload.getResult(item.id);
+              var bitmap = new createjs.Bitmap(img);
 
-            bitmap.filters = [filter, blurFilter]
-            bitmap.cache(0, 0, img.width, img.height);
-            bitmap.x = item.x
-            bitmap.y = item.y
-            bitmap.image.id = item.id
-            stage.addChild(bitmap);
+              // Filters
+              var filter = new createjs.ColorFilter(0, 0, 0, .8, 57, 100, 103);
+              var blurFilter = new createjs.BlurFilter(9, 9, 9);
 
-            // event listeners
-             bitmap.addEventListener("mouseover", function(evt){
-                bitmap.filters = []
-                bitmap.cache(0, 0, img.width, img.height);
-                stage.update();
-                evt.target.cursor = 'pointer'
-              })
-            bitmap.addEventListener("mouseout", function(){
-                bitmap.filters = [filter, blurFilter]
-                bitmap.cache(0, 0, img.width, img.height);
-                stage.update();
-              })
-            bitmap.addEventListener("click", function(evt){
-               $('#main_content').empty()
-              for(var a = 0; a < results.feed.entry.length; a++ ){
-                if (bitmap.image.id ===  results.feed.entry[a].gsx$id.$t){
-                  var data = results.feed.entry[a]
-                  var url = "js/templates/story.ejs"
-                  var html = new EJS({url: url}).render(data);
-                  $('#modalInfo').modal()
-                  $('#main_content').append(html)
+              bitmap.filters = [filter, blurFilter]
+              bitmap.cache(0, 0, img.width, img.height);
+              bitmap.x = item.x
+              bitmap.y = item.y
+              bitmap.image.id = item.id
+              stage.addChild(bitmap);
+
+              // event listeners
+               bitmap.addEventListener("mouseover", function(evt){
+                  bitmap.filters = []
+                  bitmap.cache(0, 0, img.width, img.height);
+                  stage.update();
+                  evt.target.cursor = 'pointer'
+                })
+              bitmap.addEventListener("mouseout", function(){
+                  bitmap.filters = [filter, blurFilter]
+                  bitmap.cache(0, 0, img.width, img.height);
+                  stage.update();
+                })
+              bitmap.addEventListener("click", function(evt){
+                 $('#main_content').empty()
+                for(var a = 0; a < results.feed.entry.length; a++ ){
+                  if (bitmap.image.id ===  results.feed.entry[a].gsx$id.$t){
+                    var data = results.feed.entry[a]
+                    var url = "js/templates/story.ejs"
+                    var html = new EJS({url: url}).render(data);
+                    $('#modalInfo').modal()
+                    $('#main_content').append(html)
+                  }
                 }
-              }
-            })
+              })
+            }
           }())
         }
-
       })
     stage.update();
   }

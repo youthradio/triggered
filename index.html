@@ -45,7 +45,7 @@
       </canvas>
     </div>
 
-    <!-- modal -->
+    <!-- modal for each object -->
     <div class="modal fade" id="modalInfo">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -55,13 +55,52 @@
           <div id="main_content" class="modal-body">
             <!-- data is appended here when the modal is opened. -->
           </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-  <div id="twitter">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="youthradio" data-size="large" data-hashtags="triggered">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- team modal -->
+    <div class="modal fade" id="modalTeam">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          </div>
+          <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-8">
+              <h1>About Triggered</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h3>The Story</h3>
+            </div>
+            <div class="col-md-6">
+              <h3>The YRI Team</h3>
+              <p><strong>The youth:</strong> Donta Jackson, Senay Alkebu-lan, Dakota Hayes, Le'Marcus O'neal, Lakayla Dyer</p>
+              <p> <strong>The staff:</strong> Asha Richardson, Teresa Chin, Lo Benichou, Lissa Soep.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Attributions</h3>
+              <div><p>Icons made by Freepik from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></p></div>
+            </div>
+          </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="youthradio" data-size="large" data-hashtags="triggered">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+
+    <div id="info" data-toggle="modal" data-target="#modalTeam">
+        <img src="images/info.png">
+    </div>
   </div>
 </body>
 </html>
