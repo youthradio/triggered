@@ -26,7 +26,12 @@ a{
   width: 100%;
 }
 
-canvas { display:block; background-color: rgba(0, 0, 0, 1);}
+canvas {
+  display:block;
+  width: 100%;
+  height: auto;
+  background-color: rgba(0, 0, 0, 1);
+}
 
 .container-fluid{
   padding: 0;
@@ -175,8 +180,6 @@ and (max-device-width : 480px) {
   .logo{
     height: 30px;
   }
-
-
 
   h1{
     font-size: 2em;
