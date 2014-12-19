@@ -83,7 +83,6 @@ margin: 0;
 
 .modal-content{
   height: 100%;
-  overflow: hidden;
   background-color: rgb(12, 12, 12);
 }
 
