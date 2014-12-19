@@ -101,8 +101,8 @@ $(function(){
     var h = window.innerHeight;
 
     // stage dimensions
-    var ow = window.innerWidth;
-    var oh = window.innerHeight;
+    var ow = 1320; // your stage width
+    var oh = 700; // your stage height
 
 
     // keep aspect ratio
