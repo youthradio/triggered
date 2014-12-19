@@ -158,12 +158,14 @@ and (max-device-width : 1024px) {
   .logo{
     height: 50px;
   }
+  .header{
+    height: 10%;
+  }
 
   .title{
     color: white;
     font-family: 'press_style_extra_lregular';
     font-size: 30px;
-    padding-top: 10px;
   }
 
 }
@@ -181,11 +183,13 @@ and (max-device-width : 480px) {
     height: 30px;
   }
 
+  .header{
+    height: 10%;
+  }
   .title{
     color: white;
     font-family: 'press_style_extra_lregular';
     font-size: 20px;
-    padding-top: 10px;
   }
 
 }
