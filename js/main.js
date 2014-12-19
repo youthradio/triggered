@@ -101,14 +101,14 @@ $(function(){
     var h = window.innerHeight;
 
     // stage dimensions
-    var ow = 360; // your stage width
-    var oh = 460; // your stage height
+    var ow = 1320; // your stage width
+    var oh = 640; // your stage height
 
 
-    // keep aspect ratio
-    var scale = Math.min(w / ow, h / oh);
-    stage.scaleX = scale;
-    stage.scaleY = scale;
+    // // keep aspect ratio
+    // var scale = Math.min(w / ow, h / oh);
+    // stage.scaleX = scale;
+    // stage.scaleY = scale;
 
    // adjust canvas size
    stage.canvas.width = ow * scale;
