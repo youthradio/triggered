@@ -41,18 +41,19 @@ canvas { display:block; background-color: rgba(0, 0, 0, 1);}
 }
 
 #info{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
 #info img{
   height: 50px;
 }
+
 .header{
   background-color: rgba(0, 0, 0, .5);
-  height: 100px;
+  height: 13.5%;
   text-align: center;
 }
 
@@ -68,26 +69,28 @@ canvas { display:block; background-color: rgba(0, 0, 0, 1);}
 }
 
 /*Modal*/
-
 .modal{
-  top: 100px;
+  top: 13.2%;
   height: 100%;
+  width: 100%;
 }
 
-.modal-body{
-  top: -113px;
-  width: 100%;
-  height: 100%;
-}
 .modal-dialog {
-  width: 100%;
   height: 100%;
+  width: 100%;
   margin: 0;
 }
 
 .modal-content{
   height: 100%;
+  width: 100%;
   background-color: rgb(12, 12, 12);
+}
+
+.modal-body{
+  top: -113px;
+  height: 100%;
+  width: 100%;
 }
 
 h1{
@@ -141,4 +144,48 @@ margin-top: -20px;
 
 .top{
   top: -58px;
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+
+  #info img{
+    height: 30px;
+  }
+
+  .logo{
+    height: 50px;
+  }
+
+  .title{
+    color: white;
+    font-family: 'press_style_extra_lregular';
+    font-size: 30px;
+    padding-top: 10px;
+  }
+
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+  #info img{
+    height: 20px;
+  }
+
+  .logo{
+    height: 30px;
+  }
+
+  .title{
+    color: white;
+    font-family: 'press_style_extra_lregular';
+    font-size: 20px;
+    padding-top: 5px;
+  }
+
 }
