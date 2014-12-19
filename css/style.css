@@ -71,7 +71,9 @@ canvas { display:block; background-color: rgba(0, 0, 0, 1);}
 
 .modal{
   top: 100px;
+  height: 100%;
 }
+
 .modal-body{
   top: -113px;
   width: 100%;
