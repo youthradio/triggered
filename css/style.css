@@ -155,6 +155,10 @@ h2, p{
 @media only screen
 and (min-device-width : 768px)
 and (max-device-width : 1024px) {
+  #main_content img{
+    height: auto;
+    width: 200px;
+  }
 
   .logo{
     height: 50px;
@@ -170,13 +174,18 @@ and (max-device-width : 1024px) {
     font-size: 2em;
   }
 
+
+
 }
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px) {
-
+  #main_content img{
+    height: auto;
+    width: 100px;
+  }
   .logo{
     height: 30px;
   }
@@ -192,3 +201,23 @@ and (max-device-width : 480px) {
   }
 
 }
+
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 320px) {
+/* Styles */
+  .top{
+    top: 0;
+  }
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+/* Styles */
+  .top{
+      top: 0;
+    }
+}
+
