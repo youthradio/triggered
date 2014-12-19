@@ -96,26 +96,26 @@ $(function(){
 
   // canvas resize
   function resize() {
-    // browser viewport size
-    var w = window.innerWidth;
-    var h = window.innerHeight;
+  //   // browser viewport size
+  //   var w = window.innerWidth;
+  //   var h = window.innerHeight;
 
-    // stage dimensions
-    var ow = 1320; // your stage width
-    var oh = 640; // your stage height
+  //   // stage dimensions
+  //   var ow = 1320; // your stage width
+  //   var oh = 640; // your stage height
 
 
-    // keep aspect ratio
-    var scale = Math.min(w / ow, h / oh);
-    stage.scaleX = scale;
-    stage.scaleY = scale;
+  //   // keep aspect ratio
+  //   var scale = Math.min(w / ow, h / oh);
+  //   stage.scaleX = scale;
+  //   stage.scaleY = scale;
 
-   // adjust canvas size
-   stage.canvas.width = ow * scale;
-   stage.canvas.height = oh * scale
+  //  // adjust canvas size
+  //  stage.canvas.width = ow * scale;
+  //  stage.canvas.height = oh * scale
 
-  // update the stage
-  stage.update()
+  // // update the stage
+  // stage.update()
   }
 
  // setting up the stage
