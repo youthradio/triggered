@@ -3,16 +3,16 @@ $(function(){
   var stage = new createjs.Stage("mainCanvas");
   var images = []
 
-  var intro_txt = new createjs.Text("According to a ProPublica analysis called 'Deadly Force in Black and White', young black males are 21 times more likely than white males to be shot dead by a police officer. ", "30px Courier", "#FFFFFF")
+  var intro_txt = new createjs.Text("In this interactive, you'll explore the stories behind 13 objects that police officers have mistaken for guns. The cases you're about to see vary in circumstance and outcome, but each ended with someone getting shot.", "30px Courier", "#FFFFFF")
       intro_txt.textAlign = "center";
-      intro_txt.y = 100
+      intro_txt.y = 170
       intro_txt.x = $(".canvasContainer").width()/2
       intro_txt.lineWidth = $(".canvasContainer").width()/1.5
       intro_txt.lineHeight = 50;
 
-  var skip_button = new Image();
-      skip_button.src = "images/skipintro.png"
-      skip_button.onload = addSkipButton;
+  // var skip_button = new Image();
+  //     skip_button.src = "images/skipintro.png"
+  //     skip_button.onload = addSkipButton;
 
 
   var progress = new createjs.Shape();
@@ -20,20 +20,20 @@ $(function(){
   var txt = new createjs.Text();
   var preload = new createjs.LoadQueue();
   var manifest = [
-    {src: 'images/center.png', id: 'center', x: 360, y: 80},
-    {src: 'images/cell.png', id: 'cell', x: 80, y: 280},
-    {src: 'images/taser.png', id: 'taser', x: 900, y: 10},
-    {src: 'images/brush.png', id: 'brush', x: 240, y: 350},
-    {src: 'images/pizza.png', id: 'pizza', x: 700, y: 400},
-    {src: 'images/wallet.png', id: 'wallet', x: 940, y: 200},
-    {src: 'images/wii.png', id: 'wii', x: 900, y: 330},
-    {src: 'images/pill.png', id: 'pill', x: 1130, y: 300},
-    {src: 'images/pelletgun_a.png', id: 'pellet_gun_a', x: 800, y: 300},
-    {src: 'images/pelletgun_b.png', id: 'pellet_gun_b', x: 200, y: 330},
-    {src: 'images/waterpistol.png', id: 'water_pistol', x: 350, y: 340},
-    {src: 'images/toygun.png', id: 'toy_gun', x: 800, y: 200},
-    {src: 'images/keys.png', id: 'keys', x: 200, y: 200},
-    {src: 'images/mic.png', id: 'mic', x: 300, y: 200}
+    {src: 'images/center.png', id: 'center', x: 380, y: 90},
+    {src: 'images/cell.png', id: 'cell', x: 1100, y: 250},
+    {src: 'images/taser.png', id: 'taser', x: 780, y: -10},
+    {src: 'images/brush.png', id: 'brush', x: 780, y: 360},
+    {src: 'images/pizza.png', id: 'pizza', x: 1100, y: 400},
+    {src: 'images/wallet.png', id: 'wallet', x: 1100, y: 10},
+    {src: 'images/wii.png', id: 'wii', x: 50, y: 340},
+    {src: 'images/pill.png', id: 'pill', x: 100, y: 150},
+    {src: 'images/pelletgun_a.png', id: 'pellet_gun_a', x: 180, y: 0},
+    {src: 'images/pelletgun_b.png', id: 'pellet_gun_b', x: 380, y: 430},
+    {src: 'images/waterpistol.png', id: 'water_pistol', x: 600, y: 10},
+    {src: 'images/toygun.png', id: 'toy_gun', x: 880, y: 230},
+    {src: 'images/keys.png', id: 'keys', x: 600, y: 450},
+    {src: 'images/mic.png', id: 'mic', x: 150, y: 120}
     ]
 
 
@@ -43,16 +43,19 @@ $(function(){
 
 
 // Intro text
+
   createjs.Tween.get(intro_txt)
   .to({alpha: 0}, 10000, createjs.Ease.sineIn)
-  .to({text: "Youth Radio wanted to know the stories behind some of these shootings.But the official data is incomplete. Police shootings aren't reliably reported to federal agencies. This might change with the re-authorization of the Death in Custody Reporting Act, which encourages states to report the deaths of people while in police custody."})
-  .to({alpha: 1}, 1000, createjs.Ease.sineIn)
-  .to({alpha: 0}, 15000, createjs.Ease.sineIn)
-  .to({text: "In some cases, officers shoot when they mistake another object for a gun. Here are some of those high profile stories."})
-  .to({alpha: 1}, 1000, createjs.Ease.sineIn)
-  .to({alpha: 0}, 5000, createjs.Ease.sineIn)
-  .wait(1000)
-  .call(init)
+   .wait(1000)
+   .call(init)
+
+  // .to({text: "Youth Radio wanted to know the stories behind some of these shootings. But the official data is incomplete. Police shootings aren't reliably reported to federal agencies. This might change with the re-authorization of the Death in Custody Reporting Act, which encourages states to report the deaths of people while in police custody."})
+  // .to({alpha: 1}, 1000, createjs.Ease.sineIn)
+  // .to({alpha: 0}, 20000, createjs.Ease.sineIn)
+  // .to({text: "In some cases, officers shoot when they mistake another object for a gun. Here are some of those high profile stories."})
+  // .to({alpha: 1}, 1000, createjs.Ease.sineIn)
+  // .to({alpha: 0}, 10000, createjs.Ease.sineIn)
+
 
   stage.addChild(intro_txt)
 
@@ -65,27 +68,27 @@ $(function(){
   }
 
   // add skip button to intro
-  function addSkipButton(){
-    skip_button_bitmap = new createjs.Bitmap(skip_button);
-    // skip_button_bitmap.cache(0, 0, skip_button.width, skip_button.height);
-    skip_button_bitmap.y = 530
-    skip_button_bitmap.x = $(".canvasContainer").width()/1.3
-    createjs.Tween.get(skip_button_bitmap, {loop:true}).to({alpha:0}, 1500).to({alpha:1}, 500, createjs.Ease.quadIn);
-    skip_button_bitmap.addEventListener("click", function(){
-      skip_intro()
-    })
-    stage.addChild(skip_button_bitmap);
-    stage.update();
-  }
+  // function addSkipButton(){
+  //   skip_button_bitmap = new createjs.Bitmap(skip_button);
+  //   // skip_button_bitmap.cache(0, 0, skip_button.width, skip_button.height);
+  //   skip_button_bitmap.y = 530
+  //   skip_button_bitmap.x = $(".canvasContainer").width()/1.3
+  //   createjs.Tween.get(skip_button_bitmap, {loop:true}).to({alpha:0}, 1500).to({alpha:1}, 500, createjs.Ease.quadIn);
+  //   skip_button_bitmap.addEventListener("click", function(){
+  //     skip_intro()
+  //   })
+  //   stage.addChild(skip_button_bitmap);
+  //   stage.update();
+  // }
 
 
 
-   // onclick, skip the intro text and goes straight to main screen
-  function skip_intro(){
-    createjs.Ticker.setPaused(true);
-    stage.removeChild(intro_txt, skip_button_bitmap);
-    init()
-  }
+  //  // onclick, skip the intro text and goes straight to main screen
+  // function skip_intro(){
+  //   createjs.Ticker.setPaused(true);
+  //   stage.removeChild(intro_txt, skip_button_bitmap);
+  //   init()
+  // }
 
   function tick(){
     stage.update()
@@ -129,9 +132,9 @@ $(function(){
       preload.loadManifest(manifest);
 
       // Progress bar
-      progress.graphics.beginStroke("#0B090B").drawRect(500,500,250,40);
-      progressBellow.graphics.beginStroke("#0B090B").drawRect(500,500,250,40);
-      txt.x = 530;
+      progress.graphics.beginStroke("#0B090B").drawRect(510,500,250,40);
+      progressBellow.graphics.beginStroke("#0B090B").drawRect(510,500,250,40);
+      txt.x = 570;
       txt.y = 500;
       txt.font = ("30px press_style_extra_lregular");
       txt.color = ("#0B090B");
@@ -146,7 +149,7 @@ $(function(){
   function handleProgress(event) {
       progress.graphics.clear();
       // Draw the progress bar
-      progress.graphics.beginFill("#E6E43A").drawRect(500,500,250*(event.loaded / event.total),40);
+      progress.graphics.beginFill("#E6E43A").drawRect(510,500,250*(event.loaded / event.total),40);
       txt.text = ("Loading " + Math.round(100*(event.loaded / event.total)) + "%");
       stage.addChild(progress,progressBellow,txt);
       stage.update();
@@ -159,10 +162,10 @@ $(function(){
 
   function handleComplete(event){
     // remove progress bar + text + skip button
-    stage.removeChild(progress, progressBellow, txt, skip_button_bitmap);
+    stage.removeChild(progress, progressBellow, txt);
 
     // fades the background
-    $("canvas").animate({backgroundColor: 'rgba(0, 0, 0, 0)'}, 1500)
+    $("canvas").animate({backgroundColor: 'rgba(0, 0, 0, 0)'}, 2000)
 
     // Gets data from the backend and resolves promise
     getData().then(function(results){

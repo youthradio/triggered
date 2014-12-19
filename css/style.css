@@ -17,6 +17,11 @@ html, body, .container-fluid, .canvasContainer{
   margin: 0;
   overflow: hidden;
 }
+
+a{
+  color: rgb(144, 200, 249);
+}
+
 .canvasContainer{
   width: 100%;
 }
@@ -46,7 +51,7 @@ canvas { display:block; background-color: rgba(0, 0, 0, 1);}
   height: 50px;
 }
 .header{
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .5);
   height: 100px;
   text-align: center;
 }
@@ -75,10 +80,11 @@ width: 100%;
 height: 100%;
 margin: 0;
 }
+
 .modal-content{
   height: 100%;
   overflow: hidden;
-  background-color: rgba(67, 63, 65, .7);
+  background-color: rgb(12, 12, 12);
 }
 
 h1{
@@ -97,6 +103,10 @@ h2, p{
   font-size: 15px;
 }
 
+#modalTeam h2{
+  font-size: 25px;
+  color: #E6E43A;
+}
 
 .yellow{
   color: #E6E43A;
@@ -115,14 +125,17 @@ margin-top: -20px;
   margin-top: 30px;
 }
 .close {
-float: none;
-font-size: 90px;
-font-weight: 700;
-line-height: 1;
-color: #120000;
-text-shadow: 0 1px 0 #FFFFFF;
-opacity: .2;
-position: relative;
-z-index: 3;
+  float: none;
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 1;
+  color: #120000;
+  text-shadow: 0 1px 0 #FFFFFF;
+  opacity: .2;
+  position: relative;
+  z-index: 3;
 }
 
+.top{
+  top: -58px;
+}

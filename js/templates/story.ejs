@@ -8,11 +8,12 @@
     <% if (gsx$image.$t != ""){ %>
     <% var src = "../../images/" + gsx$image.$t %>
     <img class="prof_pic" src= "<%= src %>">
+    <p><a href="<%= gsx$imagesrc.$t %>"> Image Source</a></p>
     <%}else{%>
       <h2>No Images Available </h2>
       <%}%>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 top">
     <h2><span class="yellow">Name: </span> <%= gsx$name.$t %></h2>
     <h2><span class="yellow">Date: </span> <%= gsx$date.$t %></h2>
     <h2><span class="yellow">Age: </span><%= gsx$age.$t %></h2>
