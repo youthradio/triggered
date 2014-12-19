@@ -101,8 +101,8 @@ $(function(){
     var h = window.innerHeight;
 
     // stage dimensions
-    var ow = 1320; // your stage width
-    var oh = 640; // your stage height
+    var ow = $(".canvasContainer").width()
+    var oh = $(".canvasContainer").height()
 
 
     // keep aspect ratio
