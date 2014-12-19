@@ -161,6 +161,10 @@ and (max-device-width : 1024px) {
     font-size: 30px;
   }
 
+  h1{
+    font-size: 2em;
+  }
+
 }
 
 /* Smartphones (portrait and landscape) ----------- */
@@ -168,9 +172,14 @@ and (max-device-width : 1024px) {
 and (min-device-width : 320px)
 and (max-device-width : 480px) {
 
-  /* Styles */
   .logo{
     height: 30px;
+  }
+
+
+
+  h1{
+    font-size: 2em;
   }
 
   .title{
