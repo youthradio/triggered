@@ -6,11 +6,11 @@
 <div class="row">
   <div class="col-md-6 text-center">
     <% if (gsx$image.$t != ""){ %>
-    <% var src = "../../images/" + gsx$image.$t %>
+    <% var src = "https://youthradio.org/innovationlab/triggered/images/" + gsx$image.$t %>
     <img class="prof_pic" src= "<%= src %>">
-    <p><a href="<%= gsx$imagesrc.$t %>"> Image Source</a></p>
+    <p><a href="<%= gsx$imagesrc.$t %>">Image Source</a></p>
     <%}else{%>
-      <h2>No Images Available </h2>
+      <img class="prof_pic" src= "https://youthradio.org/innovationlab/triggered/images/noimage.png">
       <%}%>
   </div>
   <div class="col-md-6 top">
